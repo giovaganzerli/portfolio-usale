@@ -1,0 +1,43 @@
+<ion-view hide-back-button="true" title="Usale | Game Instructions" hide-nav-bar="true">
+    <ion-content scroll="false" class="instructions-content" ng-init="init()">
+
+        <a href="#/level/{{ level }}/game/{{ game }}/play">
+            <img class="bg-img" ng-src="https://usale.it/game/content/img/app/level/{{ level }}/game/{{ game }}/instructions.jpg" alt="">
+        </a>
+        
+        <div class="timeline_wrapper">
+            <div class="timeline_content">
+                <img class="linea_timeline" src="https://usale.it/game/content/img/icon/linea.png" alt="">
+                <ul>
+                    <li ng-repeat="step in game_step_data.level track by $index"
+                        ng-class="{ 
+                            'down': $index % 2 == 0, 
+                            'up': $index % 2 == 1, 
+                            'to-do': $index == level, 
+                            'done': $index < level, 
+                            'disabled': $index > level || !step.enabled
+                        }">
+                        <span>{{ step.title }}</span>
+                        <span class="special_step special_{{ $index }}"
+                              ng-class="{
+                                
+                              }"
+                              ng-show="is_special_user && step.special && $index == level"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <div class="punti c_alt">
+                totale pt. <span> {{ user_data.points }}/{{ user_data.seconds }}</span> sec
+            </div>
+            <div class="nome_utente c_alt">
+                <span>{{ user_data.name }} {{ user_data.surname }}</span>
+                <a href="#/login"><span class="logout"> - Disconnetti</span></a>
+            </div>
+            <button class="help" ng-click="help()"><img src="https://usale.it/game/content/img/icon/button_help.png" alt=""></button>
+        </div>
+
+    </ion-content>
+</ion-view>

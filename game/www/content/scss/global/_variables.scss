@@ -1,0 +1,48 @@
+/** COLORS PATTERN **/
+$white: #fff;
+$black: #000;
+$light_gray: #eee;
+$gray: #d1d1d1;
+$dark_gray: #aca294;
+
+$link: blue;
+
+$error: #f40009;
+$success: #6c8d40;
+$advert: #aca294;
+
+$text: $black;
+$text_alt: $white;
+
+/** GRID SYSTEM **/
+$grid-columns: 12; // Number of column (default is 12)
+
+/*
+ * d - The Class Name Es .d-12 (if is 'null' element have not a class element associated)
+ * desktop - @Media Query device name Es. @include device(desktop) { }
+ * 0 - Device Screen max-widht (if is 0 the @menia query haven't a max-width limit)
+ * 1024 - Device Screen min-width (if is not set @menia query haven't a min-width limit)
+*/
+
+$device: b big 0 1050,
+         null from-tablet 1049,
+         t tablet 1049 768,
+         null from-mobile 767,
+         m mobile 767 481,
+         ms mobile-small 480;
+
+/*** PADDING & MARGIN ***/
+$padding_limit: 10; // number of padding class element (Es. .p-10-30 is padding: 10px 30px)
+$padding_range: 10; // padding class precision - if 10 padding class go like 10 20 30... if 5 go like 5 10 15 20...
+// padding class generated is $padding_limit * $padding_range
+
+$margin_limit: 10; // number of margin class element (Es. .p-10-30 is margin: 10px 30px)
+$margin_range: 10; // margin class precision - if 10 margin class go like 10 20 30... if 5 go like 5 10 15 20...
+// margin class generated is $margin_limit * $margin_range
+
+
+/** TEXT STYLE */
+$f_family: 'Impact';
+$f_family_alt: 'Mavel';
+
+$text_style: h1 70px, h2 50px, h3 30px, h4 25px, h5 20px, p 14px;

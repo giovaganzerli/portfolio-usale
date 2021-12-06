@@ -1,0 +1,22 @@
+<div class="bg-wrapper">
+    <img class="lui" src="assets/lui.png"/>
+    <div class="form-wrapper">
+        <img class="usale" src="assets/usale.png" />
+
+        <form class="form-signin" (ngSubmit)="login()" novalidate>
+            <h3 class="form-signin-heading">Login</h3>
+            <label for="appCode">Inserisci il tuo Codice App per continuare.</label>
+            <input type="text" id="appCode" name="appCode" class="form-control" placeholder="Codice App" [(ngModel)]="model.appCode" #appCode="ngModel" required autofocus>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="loading">
+                {{loading ? 'Caricamento..' : 'Login'}}
+            </button>
+        </form>
+    </div>
+    <img class="lei" src="assets/lei.png"/>
+</div>
+
+
+
+
+
+

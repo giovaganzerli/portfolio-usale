@@ -1,0 +1,158 @@
+<ion-view hide-back-button="true" title="Usale | Classifica" hide-nav-bar="true">
+    <ion-content scroll="false" class="classifica-content" ng-init="init()">
+
+        <img class="bg-img" ng-src="https://usale.it/game/content/img/app/classifica.jpg" />
+        <img class="title_classifica" ng-src="https://usale.it/game/content/img/app/classifica/title_{{ user_data.role }}.png" />
+        <p class="record_text">RECORD</p>
+        <div class="table_wrapper">
+            <table>
+
+                <tr>
+                    <th class="" ng-click="sortBy('app_code')"
+                        ng-show="chartType == 'general'">
+                        CODE
+                    </th>
+                    <th ng-click="sortBy('name')"
+                        class="table_name"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'myTeam' || chartType == 'myArea'">
+                        NOME
+                    </th>
+                    <!--
+                    <th ng-click="sortBy('team_code')"
+                        class="table_team"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'teams'">
+                        TEAM
+                    </th>
+                    <th ng-click="sortBy('area_code')"
+                        class="table_area"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'areas'">
+                        AREA
+                    </th>
+                    -->
+                    <th class="table_pt"
+                        ng-click="sortBy('points')">
+                        PT./SEC
+                    </th>
+                    <!--
+                    <th class="table_grammi"
+                        ng-click="sortBy('gold')"
+                        ng-show="chartType != 'general' && chartType != 'me'">
+                        GOLD
+                    </th>
+                    -->
+                </tr>
+
+                <tr ng-repeat="result in results[chartRow].rows | limitTo: 1"
+                    class="row_chart record">
+                    <td class="table_code"
+                        ng-show="chartType == 'general'">
+                        {{result.app_code}}
+                    </td>
+                    <td class="table_name"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'myTeam' || chartType == 'myArea'">
+                        {{result.name}}
+                    </td>
+                    <!--
+                    <td class="table_team"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'teams'">
+                        {{result.team_code}}
+                    </td>
+                    <td class="table_area"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'areas'">
+                        {{result.area_code}}
+                    </td>
+                    -->
+                    <td class="table_pt">
+                        {{result.points}} / {{result.seconds}}
+                    </td>
+                    <!--
+                    <td class="table_grammi"
+                        ng-show="chartType != 'general' && chartType != 'me'">
+                        {{result.coins}}
+                    </td>
+                    -->
+                </tr>
+
+                <tr ng-repeat="result in results[chartRow].rows | orderBy: order_value : reverse | limitTo: 8 : limit track by $index"
+                    class="row_chart" ng-hide="result.isRecord">
+                    <td class="table_code"
+                        ng-show="chartType == 'general'">
+                        {{result.app_code}}
+                    </td>
+                    <td class="table_name"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'myTeam' || chartType == 'myArea'">
+                        {{result.name}}
+                    </td>
+                    <!--
+                    <td class="table_team"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'teams'">
+                        {{result.team_code}}
+                    </td>
+                    <td class="table_area"
+                        ng-show="chartType == 'general' || chartType == 'me' || chartType == 'areas'">
+                        {{result.area_code}}
+                    </td>
+                    -->
+                    <td class="table_pt">
+                        {{result.points}} / {{result.seconds}}
+                    </td>
+                    <!--
+                    <td class="table_grammi"
+                        ng-show="chartType != 'general' && chartType != 'me'">
+                        {{result.coins}}
+                    </td>
+                    
+                    -->
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="nav_arrow_wrapper">
+            <div class="nav_container">
+                <a class="top_click" ng-click="move_up()"></a>
+                <img class="nav_arrow" ng-src="https://usale.it/game/content/img/icon/nav_arrow_chart.png" />
+                <a class="bottom_click" ng-click="move_down()"></a>
+            </div>
+        </div>
+
+        <!--
+        <div class="button_wrapper">
+
+            <button class="button_chart chart_general"
+                    ng-click="selectChartType('general')"
+                    ng-show="user_data.role >= 4"></button>
+            <button class="button_chart chart_areas"
+                    ng-click="selectChartType('areas')"
+                    ng-show="user_data.role >= 4 || user_data.role == 3"></button>
+            <button class="button_chart chart_teams"
+                    ng-click="selectChartType('teams')"
+                    ng-show="user_data.role >= 4 || user_data.role == 2"></button>
+            <button class="button_chart chart_myArea"
+                    ng-click="selectChartType('myArea')"
+                    ng-show="user_data.role == 3"></button>
+            <button class="button_chart chart_myTeam"
+                    ng-click="selectChartType('myTeam')"
+                    ng-show="user_data.role == 2"></button>
+            <button class="button_chart chart_me"
+                    ng-click="selectChartType('me')"
+                    ng-show="user_data.role < 4"></button>
+
+        </div>
+        -->
+        
+        <a href="#/dashboard"><img class="button_exit" ng-src="https://usale.it/game/content/img/icon/attivati/esci.png" /></a>
+
+        <div id="footer">
+            <div class="punti c_alt">
+                totale pt. <span> {{ user_data.points }}/{{ user_data.seconds }}</span> sec
+            </div>
+            <div class="nome_utente c_alt">
+                <span>{{ user_data.name }} {{ user_data.surname }}</span>
+                <a href="#/login"><span class="logout"> - Disconnetti</span></a>
+            </div>
+            <button class="help" ng-click="help()"><img src="https://usale.it/game/content/img/icon/button_help.png" alt=""></button>
+        </div>
+
+    </ion-content>
+</ion-view>

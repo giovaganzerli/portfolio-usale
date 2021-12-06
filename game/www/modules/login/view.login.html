@@ -1,0 +1,49 @@
+<ion-view hide-back-button="true" title="Usale | Login" hide-nav-bar="true">
+    <ion-content scroll="false" class="login-content">
+
+        <img class="bg-img" src="https://usale.it/game/content/img/app/login.jpg" alt="">
+        
+        <form name="loginform" method="post" ng-submit="login(loginform)" novalidate="">
+            <fieldset>
+               
+                <input type="text" 
+                       name="name"
+                       ng-model="user_data.name"
+                       value=""
+                       required>
+                       
+                <input type="text" 
+                       name="surname"
+                       ng-model="user_data.surname"
+                       value=""
+                       required>
+                       
+                <input type="text" 
+                       name="app_code"
+                       ng-model="user_data.app_code"
+                       value=""
+                       required>
+                
+                <input type="text" 
+                       name="team_code"
+                       ng-model="user_data.team_code"
+                       value="" style="display:none">
+                       
+                <input type="text" 
+                       name="area_code"
+                       ng-model="user_data.area_code"
+                       value="" style="display:none">
+                       
+                <button type="submit" name="submit" value="">
+                    <img src="https://usale.it/game/content/img/icon/button_confirm.png" alt="">
+                </button>
+                       
+            </fieldset>
+        </form>
+        
+        <div id="footer">
+            <button class="help" ng-click="help()"><img src="https://usale.it/game/content/img/icon/button_help.png" alt=""></button>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,72 @@
+<ion-view hide-back-button="true" title="Usale | Special Game - Play" hide-nav-bar="true">
+    <ion-content scroll="false" class="special-game-content special-level-{{ level.n }}" ng-init="init()">
+
+        <img class="bg-img" ng-src="https://usale.it/game/content/img/app/special/{{ curr_special_level - 1 }}/game.jpg" alt="">
+
+        <button class="end_special" ng-click="finish()"><img src="https://usale.it/game/content/img/icon/conferma.png" alt=""></button>
+
+        <div id="board" class="table" data-ng-model="kanbanBoard">
+
+            <div id="columns" class="row">
+                <div data-columnindex="1" id="column1">
+                    <div class="column">
+                        <ul as-sortable="kanbanSortOptions" data-ng-model="items2" class=" items2">
+                            <li as-sortable-item ng-repeat="item in items2" class="{{ item.destination }}">
+                                <span as-sortable-item-handle>{{ item.content }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-columnindex="2" id="column2">
+                    <div class="column">
+                        <ul as-sortable="kanbanSortOptions" data-ng-model="items3" class=" items3">
+                            <li as-sortable-item ng-repeat="item in items3" class="{{ item.destination }}">
+                                <span as-sortable-item-handle>{{ item.content }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-columnindex="3" id="column3">
+                    <div class="column">
+                        <ul as-sortable="kanbanSortOptions" data-ng-model="items4" class=" items4">
+                            <li as-sortable-item ng-repeat="item in items4" class="{{ item.destination }}">
+                                <span as-sortable-item-handle>{{ item.content }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-columnindex="4" id="column4">
+                    <div class="column">
+                        <ul as-sortable="kanbanSortOptions" data-ng-model="items5" class=" items5">
+                            <li as-sortable-item ng-repeat="item in items5" class="{{ item.destination }}">
+                                <span as-sortable-item-handle>{{ item.content }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-columnindex="0" id="column0" class="words_container">
+                    <div class="column">
+                        <ul as-sortable="kanbanSortOptions" data-ng-model="items" class="items">
+                            <li as-sortable-item ng-repeat="item in items" class="{{ item.destination }}">
+                                <span as-sortable-item-handle>{{ item.content }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="punti c_alt">
+                totale pt. <span> {{ user_data.points }}/{{ user_data.seconds }}</span> sec
+            </div>
+            <div class="nome_utente c_alt">
+                <span>{{ user_data.name }} {{ user_data.surname }}</span>
+            </div>
+            <button class="help" ng-click="help()"><img src="https://usale.it/game/content/img/icon/button_help.png" alt=""></button>
+        </div>
+
+    </ion-content>
+</ion-view>

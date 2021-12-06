@@ -1,0 +1,50 @@
+@import "~@progress/kendo-theme-bootstrap/dist/all.css"
+
+body
+  padding-top: 50px
+  overflow-y: scroll
+
+app-main
+  width: 100%
+app-login
+  width: 100%
+  text-align: center
+  input
+    margin-bottom: 10px
+    text-align: center
+app-alert
+  div.alert
+    position: fixed
+    top: 60px
+    right: 10px
+    z-index: 9999
+    &.show
+      transform: translateX(0) !important
+    &.step
+      transform: translateX(200%)
+      transition: .5s ease-in-out all
+
+.sidebar
+  padding: 20px 0
+  position: fixed
+  top: 51px
+  bottom: 0
+  left: 0
+  z-index: 1000
+  overflow-x: hidden
+  overflow-y: auto
+  border-right: 1px solid #eee
+  .nav
+    margin-bottom: 20px
+  .nav-item
+    width: 100%
+    + .nav-item
+      margin-left: 0
+  .nav-link
+    border-radius: 0
+
+
+@media (max-width: 575px)
+  .sidebar
+    position: relative
+    top: auto

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Usale</title>
+    
+    <script type="text/javascript">
+        if(window.location.hostname == 'usale.it') {
+            document.write('<base href="/game/">');
+        } else {
+            document.write('<base href="/">');
+        }
+    </script>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
+
+    <link rel="apple-touch-startup-image" href="./content/img/webapp/startup.png">
+
+    <!-- APP ICON -->
+    <link rel="apple-touch-icon" sizes="57x57" href="https://usale.it/assets/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://usale.it/assets/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://usale.it/assets/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://usale.it/assets/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://usale.it/assets/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://usale.it/assets/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://usale.it/assets/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://usale.it/assets/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://usale.it/assets/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://usale.it/assets/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://usale.it/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://usale.it/assets/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://usale.it/assets/icons/favicon-16x16.png">
+
+    <!-- FAVICONS -->
+    <link rel="icon" href="https://usale.it/assets/icons/android-icon-192x192.png">
+
+    <!-- WEBAPP TEXT -->
+    <meta name="apple-mobile-web-app-title" content="Usale">
+
+    <!-- WEBAPP COLORS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="lack-translucent">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://usale.it/assets/icons/ms-icon-144x144.png">
+
+    <!--<link href="lib/ionic/css/ionic.app.css" rel="stylesheet">-->
+
+    <!-- Angular Material -->
+    <link rel="stylesheet" type="text/css" href="./lib/angular-material/angular-material.min.css">
+
+    <!-- Angular Drag&Drop -->
+    <link rel="stylesheet" href="./lib/ng-sortable/dist/ng-sortable.min.css">
+
+    <!-- Add to Home -->
+    <link rel="stylesheet" type="text/css" href="./lib/add-to-homescreen/style/addtohomescreen.css">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" type="text/css" href="./content/fonts/Impact/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="./content/fonts/Maven/stylesheet.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" type="text/css" href="./content/css/main.css?version=6.1">
+    <link rel="stylesheet" type="text/css" href="./content/css/templates/usale.css?version=6.1">
+
+</head>
+<body ng-app="app" ng-controller="AppController as AppCtrl">
+
+    <div id="app-frame">
+
+        <a href="#/dashboard" class="link_home link_home_1"></a>
+        <a href="#/dashboard" class="link_home link_home_2"></a>
+
+        <ion-nav-view cache-view="false"></ion-nav-view>
+
+        <div id="help_modal" class="custom_modal" ng-show="showModal">
+            <div class="modal_cover" ng-click="closeModal()"></div>
+            <div class="modal_body">
+                <div class="modal_content" custom-md type="help" name="{{ currView }}"></div>
+                <button class="modal_close_btn" ng-click="closeModal()">OK</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!----------------------------------------------
+    /******************* SCRIPT *******************/
+    ----------------------------------------------->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="./lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- Angular Cookie -->
+    <script type="text/javascript" src="./lib/angular-cookies/angular-cookies.min.js"></script>
+
+    <!-- Angular Material -->
+    <script type="text/javascript" src="./lib/angular-material/angular-material.min.js"></script>
+
+    <!-- Angular Animate -->
+    <script type="text/javascript" src="./lib/angular-animate/angular-animate.min.js"></script>
+
+    <!-- Angular Aria -->
+    <script type="text/javascript" src="./lib/angular-aria/angular-aria.min.js"></script>
+
+    <!-- Angular Drag&Drop -->
+    <script type="text/javascript" src="./lib/ng-sortable/dist/ng-sortable.min.js"></script>
+
+    <!-- Add to Home -->
+    <script type="text/javascript" src="./lib/add-to-homescreen/src/addtohomescreen.min.js"></script>
+    <script type="text/javascript" src="./lib/add-to-homescreen/src/stay_standalone.js"></script>
+
+
+    <!-- MODULES -->
+    <script type="text/javascript" src="./modules/app.module.js?version=6.0"></script>
+
+    <!-- SERVICES -->
+    <script type="text/javascript" src="./services/app.service.js?version=6.0"></script>
+
+    <!-- CONTROLLERS -->
+    <script type="text/javascript" src="./modules/manutenzione/manutenzione.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/intro/intro.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/login/login.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/dashboard/dashboard.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/level/instructions/instructions.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/level/game/game.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/level/summary/summary.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/classifica/classifica.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/special/instructions/instructions.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/special/story/story.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/special/right_answer/right_answer.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/special/game/game.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/special/summary/summary.controller.js?version=6.0"></script>
+    <script type="text/javascript" src="./modules/device/device.controller.js?version=6.0"></script>
+
+    <script type="text/javascript">
+    window.onload = function () {
+        if (typeof history.pushState === "function") {
+            history.pushState("jibberish", null, null);
+            window.onpopstate = function () {
+                history.pushState('newjibberish', null, null);
+                // Handle the back (or forward) buttons here
+                // Will NOT handle refresh, use onbeforeunload for this.
+
+                // Is Back
+            };
+        }
+        else {
+            var ignoreHashChange = true;
+            window.onhashchange = function () {
+                if (!ignoreHashChange) {
+                    ignoreHashChange = true;
+                    window.location.hash = Math.random();
+                    // Detect and redirect change here
+                    // Works in older FF and IE9
+                    // * it does mess with your hash symbol (anchor?) pound sign
+                    // delimiter on the end of the URL
+                }
+                else {
+                    ignoreHashChange = false;
+                }
+            };
+        }
+    }
+
+    jQuery(document).ready(function($) {
+        
+
+        if(location.href != 'https://usale.it#/not-compatible') {
+            addToHomescreen();
+        }
+
+        // PRevent Right Click
+        $("body").on("contextmenu",function(){
+            return false;
+        });
+
+        // Prevent shortcut
+        var keys = [];
+        $('body').keyup(function(e) {
+
+            keys.splice($.inArray(e.which, keys),1);
+        });
+
+        $('body').keydown(function(e) {
+
+            var cmdFirefox = 224,
+                cmdChromeL = 91,
+                cmdChromeR = 93,
+                alt = 18,
+                cntr = 17,
+                shift = 16;
+
+            if($.inArray(e.which, keys) == -1) {
+                keys.push(e.which);
+            }
+
+            if($.inArray(cmdFirefox, keys) != -1 || $.inArray(cmdChromeL, keys) != -1 || $.inArray(cmdChromeR, keys) != -1 || $.inArray(alt, keys) != -1 || $.inArray(cntr, keys) != -1) {
+
+                return false;
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

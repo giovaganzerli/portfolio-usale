@@ -1,0 +1,11 @@
+<h1>Regolamento</h1>
+
+<div class="wrapper">
+    <button type="button" [disabled]="currIndex <= 0" class="btn btn-primary" (click)="back()">Back</button>
+    <img class="slide" src="assets/{{currPage}}.jpg" />
+    <button type="button" [disabled]="currIndex >= pages.length-1" class="btn btn-primary" (click)="next()">Next</button>
+</div>
+
+<div class="bullets">
+    <a *ngFor="let page of pages" class="bullet" [class.active]="page == currPage" (click)="select(page)">&nbsp;</a>
+</div>

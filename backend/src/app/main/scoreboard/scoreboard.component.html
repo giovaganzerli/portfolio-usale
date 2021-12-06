@@ -1,0 +1,127 @@
+<h1>Classifiche</h1>
+
+<div class="d-flex flex-row">
+    <div class="p-2" *ngIf="hasScoreboard('general')">
+        <button kendoButton
+                (click)="showScoreboard('general')"
+                [disabled]="isGeneral"
+                [primary]="true"
+
+        >Generale</button>
+    </div>
+    <!--
+    <div class="p-2" *ngIf="hasScoreboard('areas')" style="display:none">
+        <button kendoButton
+                (click)="showScoreboard('areas')"
+                [disabled]="isAreas"
+                [primary]="true"
+
+        >Aree</button>
+    </div>
+
+    <div class="p-2" *ngIf="hasScoreboard('teams')" style="display:none">
+        <button kendoButton
+                (click)="showScoreboard('teams')"
+                [disabled]="isTeams"
+                [primary]="true"
+
+        >Squadre</button>
+    </div>
+    
+    <div class="p-2" *ngIf="hasScoreboard('myTeam')">
+        <button kendoButton
+                (click)="showScoreboard('myTeam')"
+                [disabled]="currScoreboard.name == 'myTeam'"
+                [primary]="true"
+
+        >La mia squadra</button>
+    </div>
+
+    <div class="p-2" *ngIf="hasScoreboard('myArea')">
+        <button kendoButton
+                (click)="showScoreboard('myArea')"
+                [disabled]="currScoreboard.name == 'myArea'"
+                [primary]="true"
+
+        >La mia area</button>
+    </div>
+    -->
+    <div class="p-2" *ngIf="hasScoreboard('me')">
+        <button kendoButton
+                (click)="showScoreboard('me')"
+                [disabled]="currScoreboard.name == 'me'"
+                [primary]="true"
+
+        >Io</button>
+    </div>
+</div>
+
+<form novalidate #myForm="ngForm">
+    <kendo-grid
+            [kendoGridBinding]="gridData | async"
+            [sortable]="{allowUnsort: false}"
+            [pageable]="true"
+            [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
+            (sortChange)="sortChange($event)"
+            (dataStateChange)="onStateChange($event)"
+            (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+            (save)="saveHandler($event)"
+    >
+        <ng-template *ngIf="isAdmin" kendoGridToolbarTemplate>
+            <button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>&nbsp;Esporta Excel</button>
+        </ng-template>
+        <kendo-grid-excel *ngIf="isAdmin" fileName="{{scoreboardFilename}}" [fetchData]="allData"></kendo-grid-excel>
+
+        <kendo-grid-messages
+                pagerPage="Pagina"
+                pagerOf="su"
+                pagerItems="elementi"
+                pagerItemsPerPage="elementi per pagina"
+        >
+        </kendo-grid-messages>
+
+        <kendo-grid-column *ngIf="isAdmin" field="app_code" title="AppCode">
+        </kendo-grid-column>
+
+        <kendo-grid-column *ngIf="isGeneral" field="name" title="Nome">
+        </kendo-grid-column>
+        <!--
+        <kendo-grid-column *ngIf="!isAreas" field="team_code" title="Squadra">
+            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+                <input *ngIf="isGeneral" [(ngModel)]="dataItem.team_code" name="team_code" class="k-textbox"/>
+                <span *ngIf="!isGeneral">{{dataItem.team_code}}</span>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="area_code" title="Area">
+            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+                <input *ngIf="!isAreas" [(ngModel)]="dataItem.area_code" name="area_code" class="k-textbox" [required]="!isAreas"/>
+                <span *ngIf="isAreas">{{dataItem.area_code}}</span>
+            </ng-template>
+        </kendo-grid-column>
+        -->
+        <kendo-grid-column field="ptSec" title="Pt/Sec">
+            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+                <input [(ngModel)]="dataItem.points" name="points" class="k-textbox" required/>
+                <input [(ngModel)]="dataItem.seconds" name="seconds" class="k-textbox" required/>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="coins" title="Monete">
+        </kendo-grid-column>
+
+        <kendo-grid-column *ngIf="isGeneral" field="games" title="Giocati">
+        </kendo-grid-column>
+
+        <!--<kendo-grid-column field="special_games" title="SpecialGame Giocati">
+        </kendo-grid-column>-->
+
+        <kendo-grid-command-column *ngIf="isAdmin" title="command" width="220" title="Comandi">
+            <ng-template kendoGridCellTemplate>
+                <button kendoGridEditCommand class="k-primary">Modifica</button>
+                <button kendoGridSaveCommand [disabled]="myForm.invalid">Salva</button>
+                <button kendoGridCancelCommand>Annulla</button>
+            </ng-template>
+        </kendo-grid-command-column>
+    </kendo-grid>
+</form>

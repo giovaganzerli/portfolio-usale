@@ -1,0 +1,66 @@
+md-dialog {
+    
+    background-color: $gray !important;
+    border: solid 1px $dark_gray;
+    h2.md-title {
+        
+    }
+    md-dialog-actions {
+        
+        padding: 10px;
+        box-sizing: border-box;
+        .md-confirm-button {
+        
+            width: 100%;
+            margin: 0px;
+            color: $text !important;
+            background-color: $light_gray !important;
+            border: solid 1px $dark_gray;
+            border-radius: 5px;
+            font-family: 'Roboto';
+            font-weight: 300;
+        }
+    }
+}
+
+.custom_modal {
+    
+    @include fixed(top 0 left 0);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.6);
+    .modal_cover {
+        
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .modal_body {
+        
+        @include absolute(top 50% left 50%);
+        z-index: 110;
+        width: 90%;
+        height: 90%;
+        background-color: $gray;
+        border-radius: 5px;
+        @include prefix(transform, translate(-50%,-50%));
+        .modal_content {
+            
+            height: 70vh;
+            padding: 40px 50px 70px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        .modal_close_btn {
+            
+            @include absolute(bottom 10px left 50%);
+            width: 90%;
+            padding: 10px;
+            border: solid 1px $dark_gray;
+            border-radius: 5px;
+            background-color: $light_gray;
+            @include prefix(transform, translateX(-50%));
+        }
+    }
+}

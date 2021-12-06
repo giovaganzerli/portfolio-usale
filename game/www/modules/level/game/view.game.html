@@ -1,0 +1,36 @@
+<ion-view hide-back-button="true" title="Usale | Play" hide-nav-bar="true">
+    <ion-content scroll="false" class="game-content level-{{ curr_level}} game-{{ curr_game }}" ng-init="init()">
+       
+        <div class="loading" ng-hide="isReady"><p>Loading...</p></div>
+        
+        <img class="bg-img" 
+             ng-src="https://usale.it/game/content/img/app/level/{{ curr_level }}/game/{{ curr_game }}/room.jpg" 
+             ng-click="clickOnRoom()"  
+             usemap="#Map">
+             
+        <map name="Map" id="Map">
+            <area ng-repeat="img in game_imgs track by $index" 
+                  class="area_image"
+                  shape="poly"
+                  coords="{{ img.coords }}"
+                  ng-click="clickOnArea(img.coords, $index, $event)" />
+        </map>
+        
+        <div id="map-spunte"></div>
+        
+        <img ng-show="is_right == 2" class="baloon_level baloon_add" ng-src="https://usale.it/game/content/img/app/level/{{ curr_level }}/game/{{ curr_game }}/baloon-add.png?t={{ imgs_version }}" alt="">
+        <img ng-show="is_right == 1" class="baloon_level baloon_sub" ng-src="https://usale.it/game/content/img/app/level/{{ curr_level }}/game/{{ curr_game }}/baloon-sub.png?t={{ imgs_version }}" alt="">
+
+        <div id="footer">
+            <div class="punti c_alt">
+                totale pt. <span> {{ points }}/{{ seconds }}</span> sec
+            </div>
+            <div class="nome_utente c_alt">
+                <span>{{ user_data.name }} {{ user_data.surname }}</span>
+            </div>
+            <button class="help" ng-click="help()"><img src="https://usale.it/game/content/img/icon/button_help.png" alt=""></button>
+        </div>
+
+
+    </ion-content>
+</ion-view>
